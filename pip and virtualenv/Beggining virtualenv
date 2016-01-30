@@ -1,0 +1,59 @@
+If you already have pip, the easiest way is to install it globally sudo pip 
+install virtualenv. Usually pip and virtualenv are the only two packages
+you ever need to install globally, because once you've got both of these you
+can do all your work inside virtual environments.
+
+To install virtualenv globally
+
+sudo pip install virtualenv
+
+To create a new python2 virtual environment, cd to your work directory:
+
+cd ~/code/myproject/
+
+virtualenv env
+
+To create a new python 3 virtual environment
+
+virtualenv -p python3 envname
+
+here, env is the name of the virtual environment directory
+
+NOTE: if you are using git, add env/ directory to your .gitignore file.
+Don't commit it.
+
+To install PyPI package to the environemt,
+
+env/bin/pip install <package>
+
+To execute the copy of python in the virtualenv
+
+env/bin/python
+
+>>> import <package>
+>>> # Success !
+
+
+But that's a lot of typing!
+
+virtualenv has one more trick up its sleeve. Instead of typing env/bin/python
+and env/bin/pip every time, we can run a script to activate the environment. 
+This script, which can be executed with source env/bin/activate, simply adjusts
+a few variables in your shell (temporarily) so that when you type python, you
+actually get the Python binary inside the virtualenv instead of the global one:
+
+$ which python
+/usr/bin/python
+$ source env/bin/activate
+$ which python
+/Users/jamie/code/myproject/env/bin/python
+
+So now you only need to run "pip install <package>", or "python", to run the 
+binaries in the virtual env.
+
+To deactivate a virtualenv, use the "deactivate" command.
+
+
+REQUIREMENTS FILES:
+
+Every virtual environemt should have its own requirements.txt file.

@@ -1,0 +1,54 @@
+Installation
+
+sudo apt-get update
+
+To install pip for python 2
+
+sudo apt-get install python-pip
+
+for python 3
+
+sudo apt-get install python3-pip
+
+To find what version of pip you are running use either of the following
+
+pip --version
+pip -V
+
+To upgrade pip itself to latest version
+
+pip install --upgrade pip
+
+To view the list of PyPI packages with their versions:
+
+pip list
+
+To install a PyPI package:
+
+pip install <package name>
+
+To install a specific version of a package
+
+pip install <package name> == <package version> # specific version
+
+To install a minimum version
+
+pip install <package name> >= <package version> # minimal version
+
+To list outdated packages
+
+pip list --outdated
+
+to show details about an installed package
+
+pip show <package>
+
+to search PyPI for packages
+
+pip search <package>
+
+
+Resources :
+
+https://pip.pypa.io/en/stable/
+http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/

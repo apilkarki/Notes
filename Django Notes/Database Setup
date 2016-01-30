@@ -1,0 +1,29 @@
+1) Add the polls app to the mysite/settings.py file, under INSTALLED_APPS.
+
+2) Run a database migration. This creates all the Database tables and schema
+from the INSTALLED_APPS and other configuration options.
+
+# ./manage.py migrate
+
+Models
+If you make changes to your models (i.e. add new ones)
+
+1) ./manage.py makemigration
+
+The above command creates a database schema using python, located in
+polls/migrations
+
+2) ./manage.py migrate
+
+Actually committs the schema to the database (i.e. db.sqlite3)
+
+Models are essentially, your database layout, with additional metadata.
+To test your project without making a migration:
+
+./manage.py check
+
+remember the three-step guide to making model changes:
+
+    Change your models (in models.py).
+    Run python manage.py makemigrations to create migrations for those changes
+    Run python manage.py migrate to apply those changes to the database.

@@ -1,0 +1,50 @@
+Make sure to have the following Debian packages
+
+python-mysqldb - A Python interface to MySQL
+python-mysqldb-dbg - A Python interface to MySQL (debug extension)
+
+$ sudo apt-get install python-mysqldb*
+
+Import the mysqldb package and connect to a database:
+
+import MySQLdb as mdb
+db=mdb.connect(user="mysql username", passwd="password", host = "host to connect to", db="database")
+
+Before we can query the database, we must set a cursor to use.
+cursor = db.cursor()
+
+max_price = 5
+c.execute("""SELECT <field1>, <field2> FROM <table> WHERE price < %s""", (max_price,))
+
+To get a single row of results,
+data = c.fetchone()
+
+To get <n> rows of results:
+data = c.fetchmany(n)
+
+To get all of the results:
+data = c.fetchall()
+
+In this example, max_price=5 Why, then, use %s in the string? Because MySQLdb 
+will convert it to a SQL literal value, which is the string '5'. When it's 
+finished, the query will actually say, "...WHERE price < 5".
+
+Why the tuple? Because the DB API requires you to pass in any parameters as a 
+sequence. Due to the design of the parser, (max_price) is interpreted as using
+algebraic grouping and simply as max_price and not a tuple. Adding a comma, 
+i.e. (max_price,) forces it to make a tuple
+
+To close the db connection
+
+db.close()
+
+
+
+
+
+
+
+References:
+
+http://mysql-python.sourceforge.net/MySQLdb.html#id7
+http://www.tutorialspoint.com/python/python_database_access.htm

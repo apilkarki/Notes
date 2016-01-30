@@ -1,0 +1,21 @@
+Requirments files contain lists of PyPI packages along with their version.
+For example, a requirments file may contain:
+
+MyApp
+Framework==0.9.4
+Library>=0.2
+..
+..
+..
+
+If you save these values in a file named requirments.txt, you can run the command
+
+pip install -r requirments.txt
+
+to have pip install the corresponding packages and their versions to set up
+your python environment.
+
+
+To generate a new requirments file, use:
+
+pip freeze > requirments.txt
