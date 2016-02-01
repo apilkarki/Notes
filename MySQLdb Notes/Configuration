@@ -1,0 +1,53 @@
+Setting up python for mysql on Ubuntu
+
+ apt-get install python-dev libmysqlclient-dev
+ pip install MySQL-python
+
+
+To change the prompt
+
+#mysql -u root -p --prompt=<prompt>
+
+possible values for prompt are
+
+\N = "MariaDB"
+\u = <username>
+\U = <username>@<hostname>
+\d = <database>
+
+For example, a useful prompt is:
+
+# mysql -u root -p --prompt="\N \U[\d]>"
+
+Which displays 
+
+MariaDB root@localhost[database_name]>
+
+
+User Management
+
+To create a mysql username
+
+$ mysql -u root -p
+mysql> create user '<username>'@'<hostname>' identified by '<username's password>'
+
+The user will only be able to access the mysql server on the specified host.
+
+To set the user's privilege
+
+mysql> grant all privileges on '<allowed databases>'.'<allowed tables>' to '<username>'@'<hostname>'
+--> with grant option;
+
+"WITH GRANT OPTION" allows the new user to use the GRANT command.
+
+To change a user's password
+
+SET PASSWORD FOR 'bob'@'%.example.org' = PASSWORD('cleartext password');
+examples:
+
+CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'mypass';
+GRANT ALL ON db1.* TO 'jeffrey'@'localhost';
+GRANT ALL ON db1.tbl TO 'jeffrey'@'localhost';
+GRANT ALL ON *.* TO 'jeffrey'@'localhost';
+GRANT SELECT ON db2.invoice TO 'jeffrey'@'localhost';
+GRANT SELECT, INSERT ON *.* TO 'someuser'@'somehost';

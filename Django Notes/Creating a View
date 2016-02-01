@@ -1,0 +1,46 @@
+In the polls/views.py file, add the following lines of code to produce a views
+
+////////polls/views.py///////////
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("HTML for the index page")
+///////////////////////////////////
+
+To call the view, we need to map it to a URL. To do this, create a file
+polls/urls.py and add the following lines.
+
+# cd /path/to/polls/
+# touch urls.py
+
+////////////polls.urls.py//////////////
+from django.conf.urls import urls
+
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+]
+////////////////////////////////////////
+
+Lastly, we need to include this polls/urls.py file in the root 
+mysite/urls.py with the following code.
+
+////////////// mysite/urls.py/////////////
+from django.conf.urls import include, url
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^polls/", include("polls.urls")),
+    url(r'^admin/', admin.site.urls),
+]
+
+/////////////////////////////////////////
+
+Here is an explanation of how views work.
+
+1) The url matches in the polls.urls.py
+
+2) any matching part is stripped off, and sent to the polls/urls.py
+
+3) a view is returned based on this match

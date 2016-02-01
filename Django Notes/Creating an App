@@ -1,0 +1,18 @@
+Projects are made up of multiple apps. To create a polls apps, cd to the same
+directory as the manage.py command.
+
+# ./manage.py startapp polls
+
+This will create a directory called "polls" alongside the mysite directory with
+the following layout.
+
+polls/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py
+

@@ -1,0 +1,49 @@
+The SELECT statement is used to pull information from a table. The general form of the statement is:
+
+SELECT what_to_select
+FROM which_table
+WHERE conditions_to_satisfy;
+
+To change a single record's field:
+
+mysql> UPDATE <table> SET <field1> = <value1> WHERE <field2> = <value2>;
+
+Some useful queries:
+
+mysql> SELECT * FROM pet WHERE birth >= '1998-1-1';
+
+mysql> SELECT * FROM pet WHERE species = 'dog' AND sex = 'f';
+
+mysql> SELECT * FROM pet WHERE species = 'snake' OR species = 'bird';
+
+AND has higher precedence than OR. If you use both, you should use parenthesis.
+
+mysql> SELECT * FROM pet WHERE (species = 'cat' AND sex = 'm')
+    -> OR (species = 'dog' AND sex = 'f');
+    
+
+Selecting Particular Columns:
+
+mysql> select <column1>, <column2>, <column3>, .... from <table>;
+
+To only return unique values (no repititions)
+
+mysql> SELECT DISTINCT <field> FROM <table>;
+
+To sort rows Ascending by <field>
+mysql> select <field1>, <field2>, ... from <table> order by <field>;
+
+Descending by <field>
+mysql> select <field1>, <field2>, ... from <table> order by <field> desc;
+
+To only list the first 10 results:
+
+mysql> select * from <tablename> limit 10
+
+
+
+
+
+
+To rename a table/database
+mysql> rename [table|database] <table/database name> to <new table/database name>

@@ -1,0 +1,15 @@
+mysql> create database if not exists <database name>
+
+To grant privileges to use the database
+
+mysql> grant all on <database name>.* to <mysql username>@<client hostname>
+
+To use a MySql database from the shell (useful for scripting)
+
+$ mysql -u <username> -p <database name>
+
+You can see at any time which database is currently selected using SELECT DATABASE().
+
+How about age? That might be of interest, but it is not a good thing to store in a database. Age changes 
+as time passes, which means you'd have to update your records often. Instead, it is better to store a fixed value such as date of birth.
+
