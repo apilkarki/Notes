@@ -1,0 +1,17 @@
+1) to create a new branch
+
+git branch <branch name>
+
+2) to view all current branches
+
+git branch
+
+3) to delete a branch
+
+git branch --delete <branch name>
+
+4) to switch to another branch
+
+git checkout <branch name>
+
+

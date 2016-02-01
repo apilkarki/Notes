@@ -1,0 +1,40 @@
+1) git config
+
+Git comes with a tool called git config that lets you get and set configuration
+variables that control all aspects of how Git looks and operates. These variables 
+be stored in three different places:
+
+1) /etc/gitconfig (file)
+
+Contains values for every user on the system (system wide config), and all their repos.
+If you pass the option --system to git config, it reads and writes from this file specifically.
+
+2) ~/.gitconfig or ~/.config/git/config file:
+
+Specific to your user. You can make Git read and write to this file specifically by passing the
+--global option.
+
+3) config file:
+
+In the .git/config repo directory (specific to a single repo).
+
+Each level overrides values in the previous level, so values in .git/config trump those in /etc/gitconfig.
+
+
+SETTING UP YOUR IDENTITY)
+
+git config --global user.name "John Doe"
+git config --global user.email "johndoe@example.com"
+
+SETTING UP YOUR EDITOR)
+
+git config --global core.editor vim
+
+CHECKING YOUR SETTINGS)
+
+git config --list
+git config user.name
+git config user.email
+
+
+

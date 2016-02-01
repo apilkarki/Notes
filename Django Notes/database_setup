@@ -1,0 +1,110 @@
+1) If you are using MySQL, the preffered PyPI package is mysqlclient as it support python 3, and is a drop in replacement for MySQLdb
+
+pip install mysqlclient
+
+2) Create the database
+
+CREATE DATABASE IF NOT EXISTS <dbname> CHARACTER SET utf8;
+
+3) Collation Settings
+
+By default, with a UTF-8 database, MySQL will use the utf8_general_ci collation. This results in all string equality comparisons being done in a case-insensitive manner. That is, "Fred" and "freD" are considered equal at the database level. If you have a unique constraint on a field, it would be illegal to try to insert both "aa" and "AA" into the same column, since they compare as equal (and, hence, non-unique) with the default collation.
+
+4) Connecting to the database
+
+Connection settings are used in this order:
+
+    OPTIONS.
+    NAME, USER, PASSWORD, HOST, PORT
+    MySQL option files.
+
+Here’s a sample configuration which uses a MySQL option file:
+
+# settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': '/path/to/my.cnf',
+        },
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# my.cnf
+[client]
+database = NAME
+user = USER
+password = PASSWORD
+default-character-set = utf8
+
+
+MySQL support is simple to add. In your DATABASES array, you will have an entry like this:
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'DB_NAME',
+        'USER': 'DB_USER',
+        'PASSWORD': 'DB_PASSWORD',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+
+You also have the option of utilizing MySQL option files, as of Django 1.7. You can accomplish this by setting your DATABASES array like so:
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': '/path/to/my.cnf',
+        },
+    }
+}
+
+You also need to create the /path/to/my.cnf file with similar settings from above
+
+[client]
+database = DB_NAME
+host = localhost
+user = DB_USER
+password = DB_PASSWORD
+default-character-set = utf8
+
+With this new method of connecting in Django 1.7, it is important to know the order connections are established:
+
+1. OPTIONS.
+2. NAME, USER, PASSWORD, HOST, PORT
+3. MySQL option files.
+
+    In other words, if you set the name of the database in OPTIONS, this will take precedence over NAME, which would override anything in a MySQL option file.
+
+If you are just testing your application on your local machine, you can use
+
+python manage.py runserver
+
+Adding the ip:port argument allows machines other than your own to access your development application. Once you are ready to deploy your application, I recommend taking a look at the chapter on Deploying Django on the djangobook
+
+If you are using Oracle's MySQL connector your ENGINE line should look like this:
+
+'ENGINE': 'mysql.connector.django',
+
+
+

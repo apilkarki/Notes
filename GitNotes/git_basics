@@ -1,0 +1,19 @@
+1) create a git repo
+
+git init
+
+2) cloning a git repo (including all commits)
+
+git clone <url> <target repo/directory name>
+
+Git uses a number of different protocols.
+
+https://<url>
+git://<path/to/git/repo.git> (which uses SSH)
+user@server:<path/to/git/repo.git> (which uses SSH)
+
+3) git diff
+
+
+
+

@@ -1,0 +1,8 @@
+Assuming you have python and pip installed
+
+# pip install django
+
+Or if you already have Django but need to get a newer version of django
+
+# pip install --upgrade django
+

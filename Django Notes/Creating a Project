@@ -1,0 +1,33 @@
+Change into your projects directory and run the following command.
+
+# django-admin startproject <name_of_project>
+
+# django-admin startproject <name_of_application>
+
+Notice the directory structure that is created.
+
+mysite/
+    manage.py
+    mysite/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+        
+        
+1) The outer mysite directory can be named anything. Django doesn't care.
+
+2) manage.py is a command line utility used for interacting with your project.
+
+3) The inner mysite directory is a Python Package (due to the fact it contains
+an __init__.py file.
+
+Test the new project by starting the development server
+
+# ./manage.py runserver 0.0.0.0
+
+Generic
+
+# ./manage.py runserver $IP:$PORT
+
+To run on cloud 9, run on port 8080.

@@ -1,0 +1,33 @@
+Django project from scratch
+
+1) Install Django
+2) Create Django project
+django-admin startproject <project name>
+
+3) create django application
+./manage.py startapp <app name>
+
+4) edit app/views.py
+from django.http import HttpResponse
+
+def index(req):
+    return HttpResponse(html)
+
+5) edit app/urls.py
+
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r"^$", views.index, name="index"),
+    ]
+
+6) edit project/urls.py
+
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r"^admin/", admin.site.urls),
+    url(r"^application/", include("application.views")),
+    ]
