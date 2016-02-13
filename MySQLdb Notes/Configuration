@@ -51,3 +51,10 @@ GRANT ALL ON db1.tbl TO 'jeffrey'@'localhost';
 GRANT ALL ON *.* TO 'jeffrey'@'localhost';
 GRANT SELECT ON db2.invoice TO 'jeffrey'@'localhost';
 GRANT SELECT, INSERT ON *.* TO 'someuser'@'somehost';
+
+To delete users from SQL,
+mysql> select user, host from mysql.user;
+DROP USER 'jeffrey'@'localhost';
+
+The DROP USER statement removes one or more MySQL accounts and their privileges. 
+It removes privilege rows for the account from all grant tables. 
