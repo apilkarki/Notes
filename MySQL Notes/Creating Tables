@@ -1,0 +1,27 @@
+Because you are beginning with an empty table, an easy way to populate it is to 
+create a text file containing a row for each of your animals, then load the contents 
+of the file into the table with a single statement.
+
+You could create a text file pet.txt containing one record per line, with values separated 
+by tabs, and given in the order in which the columns were listed in the CREATE TABLE statement. 
+For missing values (such as unknown sexes or death dates for animals that are still living), you 
+can use NULL values. To represent these in your text file, use \N (backslash, capital-N). For 
+example, the record for Whistler the bird would look like this (where the whitespace between 
+values is a single tab character): 
+
+Whistler        Gwen    bird    \N      1997-12-09      \N
+
+To load the text file pet.txt into the pet table, use this statement:
+
+mysql> LOAD DATA LOCAL INFILE '/path/pet.txt' INTO TABLE pet;
+
+For CSV files, use the following sed command to replace all commas with tabs:
+
+$ sed -i "s/,/\t\g" <filename>.csv
+
+You could also add a new record using an INSERT statement like this:
+
+mysql> INSERT INTO pet
+    -> VALUES ('Puffball','Diane','hamster','f','1999-03-30',NULL);
+    
+Observe that MySQL expects dates in 'YYYY-MM-DD' format; this may be different from what you are used to.
