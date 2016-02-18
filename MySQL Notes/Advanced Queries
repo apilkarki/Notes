@@ -1,3 +1,10 @@
+```sql
+SELECT column, another_column, …
+FROM mytable
+WHERE condition(s)
+ORDER BY column ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+
 BETWEEN token
 Query items based on a range of values
 select * from <table> where <field> between <value1> and <value2>;
@@ -50,6 +57,5 @@ Coupled with the limit token, decides where the query starts to display the rows
 select * from <table> limit <number> offset <offset number>
 
 EX)
-```sql
 select * from movies order by title limit 5 offset 5;
 ```
