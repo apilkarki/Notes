@@ -1,0 +1,29 @@
+INNER JOINS)
+
+SELECT column, another_table_column, …
+FROM mytable
+INNER JOIN another_table 
+    ON mytable.id = another_table.id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+
+EX) Given two tables Movie, and Boxoffice.
+select * from movies
+inner join boxoffice
+on id = movie_id;
+
+EX)
+select * from movies
+inner join boxoffice
+on id = movie_id
+order by rating desc;
+
+OUTER JOINS)
+SELECT column, another_column, …
+FROM mytable
+INNER/LEFT/RIGHT/FULL JOIN another_table 
+    ON mytable.id = another_table.matching_id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
