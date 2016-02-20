@@ -17,3 +17,6 @@ user@server:<path/to/git/repo.git> (which uses SSH)
 
 
 
+To unstage files (if you accidently git add files that should have been added to gitinit)
+$ git reset <files_to_be_unstaged>
+$ git reset .
