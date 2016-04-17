@@ -20,3 +20,8 @@ user@server:<path/to/git/repo.git> (which uses SSH)
 To unstage files (if you accidently git add files that should have been added to gitinit)
 $ git reset <files_to_be_unstaged>
 $ git reset .
+
+If you want to copy files from another repository, you can clone that whole repository first.
+$ git clone <Repo-URL> temp-repo
+Then copy the desired files as needed.
+
